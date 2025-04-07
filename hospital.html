@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Hospital - HealthEase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🏥 Choose a Hospital</h1>
+  </header>
+
+  <div class="hospital-list" id="hospitalList"></div>
+
+  <script>
+    const hospitals = [
+      {
+        id: "hosp1",
+        name: "Sunrise Multispeciality Hospital",
+        location: "Hyderabad",
+        logo: "https://img.icons8.com/color/96/hospital.png",
+        doctors: [
+          {
+            name: "Dr. Arjun Reddy",
+            specialty: "Cardiologist",
+            slots: ["10:00 AM", "11:30 AM", "03:00 PM"]
+          },
+          {
+            name: "Dr. Neha Singh",
+            specialty: "Dermatologist",
+            slots: ["09:00 AM", "12:00 PM", "04:30 PM"]
+          }
+        ]
+      },
+      {
+        id: "hosp2",
+        name: "Greenleaf City Clinic",
+        location: "Bangalore",
+        logo: "https://img.icons8.com/fluency/96/clinic.png",
+        doctors: [
+          {
+            name: "Dr. Ravi Kumar",
+            specialty: "Orthopedic",
+            slots: ["11:00 AM", "01:00 PM", "05:00 PM"]
+          },
+          {
+            name: "Dr. Ayesha Khan",
+            specialty: "Pediatrician",
+            slots: ["10:00 AM", "01:30 PM", "04:00 PM"]
+          }
+        ]
+      }
+    ];
+
+    localStorage.setItem("hospitals", JSON.stringify(hospitals));
+
+    const container = document.getElementById("hospitalList");
+
+    hospitals.forEach(hospital => {
+      const div = document.createElement("div");
+      div.className = "hospital-card";
+      div.innerHTML = `
+        <img src="${hospital.logo}" alt="${hospital.name}" />
+        <h2>${hospital.name}</h2>
+        <p>📍 ${hospital.location}</p>
+        <button onclick='viewDoctors("${hospital.id}")'>View Doctors</button>
+      `;
+      container.appendChild(div);
+    });
+
+    function viewDoctors(hospitalId) {
+      localStorage.setItem("selectedHospital", hospitalId);
+      window.location.href = "doctors.html";
+    }
+  </script>
+</body>
+</html>

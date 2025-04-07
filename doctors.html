@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose Doctor - HealthEase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>👨‍⚕️ Select a Doctor</h1>
+  </header>
+
+  <div class="doctor-list" id="doctorList"></div>
+
+  <script>
+    const hospitals = JSON.parse(localStorage.getItem("hospitals") || "[]");
+    const selectedHospitalId = localStorage.getItem("selectedHospital");
+
+    const hospital = hospitals.find(h => h.id === selectedHospitalId);
+    const doctorListDiv = document.getElementById("doctorList");
+
+    if (!hospital) {
+      doctorListDiv.innerHTML = "<p>⚠️ Hospital not found!</p>";
+    } else {
+      hospital.doctors.forEach((doctor, docIndex) => {
+        const card = document.createElement("div");
+        card.className = "doctor-card";
+
+        let slotsHTML = doctor.slots.map(slot => 
+          `<button class="slot-btn" onclick="bookAppointment('${doctor.name}', '${slot}', '${doctor.specialty}')">${slot}</button>`
+        ).join(" ");
+
+        card.innerHTML = `
+          <h2>${doctor.name}</h2>
+          <span class="label">${doctor.specialty}</span>
+          <p>Available Slots:</p>
+          <div class="slots">${slotsHTML}</div>
+        `;
+
+        doctorListDiv.appendChild(card);
+      });
+    }
+
+    function bookAppointment(doctorName, slot, specialty) {
+      const patientName = prompt("Enter Patient Name:");
+      const age = prompt("Enter Age:");
+      const problem = prompt("Enter Problem:");
+
+      if (!patientName || !age || !problem) {
+        alert("All details are required.");
+        return;
+      }
+
+      const appointment = {
+        hospital: hospital.name,
+        doctor: doctorName,
+        slot,
+        specialty,
+        patientName,
+        age,
+        problem,
+        user: localStorage.getItem("loggedInUser"),
+        time: new Date().toLocaleString()
+      };
+
+      const appointments = JSON.parse(localStorage.getItem("appointments") || "[]");
+      appointments.push(appointment);
+      localStorage.setItem("appointments", JSON.stringify(appointments));
+
+      alert(`Appointment booked with ${doctorName} at ${slot}`);
+      window.location.href = "appointments.html";
+    }
+  </script>
+</body>
+</html>

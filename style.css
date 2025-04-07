@@ -1,0 +1,141 @@
+/* Global styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #e2f0cb, #fadadd);
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Main container */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Forms */
+input, select, button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #e91e63;
+}
+
+/* Login Box */
+.login-box {
+  width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #4caf50;
+}
+
+/* Hospital Cards */
+.hospital-card {
+  background: #ffffff;
+  border-left: 6px solid #4caf50;
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.hospital-card:hover {
+  transform: scale(1.02);
+}
+
+.hospital-card h3 {
+  margin: 0;
+  color: #333;
+}
+
+.hospital-card p {
+  color: #777;
+  margin: 5px 0;
+}
+
+.hospital-card button {
+  background: #4caf50;
+  margin-top: 10px;
+}
+
+/* Doctor Tags */
+.doctor-card {
+  background-color: #f9f9f9;
+  border-left: 6px solid #ff9800;
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.doctor-card h4 {
+  margin: 0;
+  color: #333;
+}
+
+.doctor-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Doctor Labels */
+.doctor-label {
+  display: inline-block;
+  background-color: #f06292;
+  color: white;
+  padding: 6px 12px;
+  margin: 6px 0;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Appointment card */
+.appointment-card {
+  background-color: #f5f5f5;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-left: 5px solid #4caf50;
+  border-radius: 10px;
+}
+
+.appointment-card strong {
+  color: #333;
+}
